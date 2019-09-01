@@ -37,6 +37,7 @@ class App extends StatelessWidget {
               }
           );
         }
+        return null;
       },
       routes: {
         '/': (context) => MovieList(moviesBloc),
