@@ -7,7 +7,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.38.2"
+    version: "0.34.3"
   args:
     dependency: transitive
     description:
@@ -35,42 +35,42 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.6"
+    version: "1.1.0"
   build_config:
     dependency: transitive
     description:
       name: build_config
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.1+1"
+    version: "0.3.2"
   build_daemon:
     dependency: transitive
     description:
       name: build_daemon
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "0.2.3"
   build_resolvers:
     dependency: transitive
     description:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.7"
+    version: "0.2.3"
   build_runner:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.7"
+    version: "1.2.3"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.9"
+    version: "2.0.1"
   built_collection:
     dependency: transitive
     description:
@@ -147,7 +147,7 @@ packages:
       name: dart_style
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.10"
+    version: "1.2.3"
   fixnum:
     dependency: transitive
     description:
@@ -171,7 +171,7 @@ packages:
       name: front_end
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.24"
+    version: "0.1.9+1"
   glob:
     dependency: transitive
     description:
@@ -217,9 +217,20 @@ packages:
   inject:
     dependency: "direct main"
     description:
-      path: "injection\\inject.dart\\package\\inject"
-      relative: true
-    source: path
+      path: "package/inject"
+      ref: HEAD
+      resolved-ref: "4ffd3d339d8b776b2bec8d95ae6d3d168856e76c"
+      url: "https://github.com/google/inject.dart.git"
+    source: git
+    version: "1.0.0-alpha"
+  inject_generator:
+    dependency: "direct dev"
+    description:
+      path: "package/inject_generator"
+      ref: HEAD
+      resolved-ref: "4ffd3d339d8b776b2bec8d95ae6d3d168856e76c"
+      url: "https://github.com/google/inject.dart.git"
+    source: git
     version: "1.0.0-alpha"
   io:
     dependency: transitive
@@ -241,14 +252,14 @@ packages:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "2.4.0"
   kernel:
     dependency: transitive
     description:
       name: kernel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.24"
+    version: "0.3.9+1"
   logging:
     dependency: transitive
     description:
@@ -305,6 +316,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  plugin:
+    dependency: transitive
+    description:
+      name: plugin
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0+3"
   pool:
     dependency: transitive
     description:

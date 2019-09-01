@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' show Client, Response;
@@ -8,7 +7,7 @@ import 'package:inject/inject.dart';
 
 class MovieApiProvider {
   final Client client;
-  final _apiKey = 'api-key';
+  final _apiKey = '47ad55bbbaa5a526b5386fd95d0c8545';
   final _baseUrl = "http://api.themoviedb.org/3/movie";
 
   @provide
