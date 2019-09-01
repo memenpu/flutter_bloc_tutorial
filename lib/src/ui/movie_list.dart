@@ -1,27 +1,33 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_tutorial/src/blocs/movie_detail_bloc_provider.dart';
 import '../models/item_model.dart';
 import '../blocs/movies_bloc.dart';
-import 'movie_detail.dart';
 
 class MovieList extends StatefulWidget {
+  final MoviesBloc _bloc;
+
+  MovieList(this._bloc);
 
   @override
   State<StatefulWidget> createState() {
-    return _MovieListState();
+    return MovieListState();
   }
 }
-class _MovieListState extends State<MovieList>{
+
+class MovieListState extends State<MovieList> {
   @override
   void initState() {
-    bloc.fetchAllMovies();
     super.initState();
+    widget._bloc.init();
+    widget._bloc.fetchAllMovies();
   }
+
   @override
   void dispose() {
-    bloc.dispose();
+    widget._bloc.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +35,7 @@ class _MovieListState extends State<MovieList>{
         title: Text('Popular Movies'),
       ),
       body: StreamBuilder(
-        stream: bloc.allMovies,
+        stream: widget._bloc.allMovies,
         builder: (context, AsyncSnapshot<ItemModel> snapshot) {
           if (snapshot.hasData) {
             return buildList(snapshot);
@@ -59,32 +65,12 @@ class _MovieListState extends State<MovieList>{
               onTap: () => openDetailPage(snapshot.data, index),
             ),
           );
-//            Image.network(
-//            'https://image.tmdb.org/t/p/w185${snapshot.data
-//                .results[index].poster_path}',
-//            fit: BoxFit.cover,
-//          );
         });
   }
 
   openDetailPage(ItemModel data, int index) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) {
-        return
-          MovieDetailBlocProvider(
-            child: MovieDetail(
-              title: data.results[index].title,
-              posterUrl: data.results[index].backdrop_path,
-              description: data.results[index].overview,
-              releaseDate: data.results[index].release_date,
-              voteAverage: data.results[index].vote_average.toString(),
-              movieId: data.results[index].id,
-            ),
-          );
-
-      }),
-    );
+    Navigator.pushNamed(
+        context,
+        'movieDetail', arguments: data.results[index]);
   }
-
 }

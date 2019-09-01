@@ -1,19 +1,26 @@
+
 import 'dart:async';
-import 'package:flutter_bloc_tutorial/src/models/trailer_model.dart';
-import 'package:http/http.dart' show Client;
 import 'dart:convert';
+import 'package:http/http.dart' show Client, Response;
 import '../models/item_model.dart';
+import '../models/trailer_model.dart';
+import 'package:inject/inject.dart';
 
 class MovieApiProvider {
-  Client client = Client();
-  final _apiKey = '47ad55bbbaa5a526b5386fd95d0c8545';
+  final Client client;
+  final _apiKey = 'api-key';
   final _baseUrl = "http://api.themoviedb.org/3/movie";
 
+  @provide
+  MovieApiProvider(this.client);
+
   Future<ItemModel> fetchMovieList() async {
-    print("entered");
-    final response = await client
-        .get("http://api.themoviedb.org/3/movie/popular?api_key=$_apiKey");
-    print(response.body.toString());
+    Response response;
+    if(_apiKey != 'api-key') {
+      response = await client.get("$_baseUrl/popular?api_key=$_apiKey");
+    }else{
+      throw Exception('Please add your API key');
+    }
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
       return ItemModel.fromJson(json.decode(response.body));
